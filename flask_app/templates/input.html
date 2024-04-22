@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroIdentify - Image Upload</title>
+    <style>
+       .container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="file"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"], #capture-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+input[type="submit"]:hover, #capture-btn:hover {
+    background-color: #45a049;
+}
+
+#capture-input {
+    display: none;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container {
+        margin: 20px auto;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+}
+
+    </style>
+     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+     <link rel="stylesheet" href="\static\styles.css">
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+          <div class="logo"> <a href="#" class="emlj-link">𝔼𝕄𝕃𝕁</a></div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="close-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="/">Home</a></li>
+            <li><a href="/input">Plant Disease Predict</a></li>
+            <!-- <li>
+              <a href="#" class="desktop-item">Dropdown Menu</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+              <ul class="drop-menu">
+                <li><a href="#">Drop menu 1</a></li>
+                <li><a href="#">Drop menu 2</a></li>
+                <li><a href="#">Drop menu 3</a></li>
+                <li><a href="#">Drop menu 4</a></li>
+              </ul>
+            </li> -->
+            <li>
+              <a href="#" class="desktop-item">More Menu</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">More Menu</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <img
+                      src="/static/nav_pic.jpg"
+                      alt="">
+                  </div>
+                  <div class="row">
+                    <header>Check Weather</header>
+                    <ul class="mega-links">
+                      <li><a href="/weather">Weather</a></li>
+                      <!-- <li><a href="#">Vectors</a></li>
+                      <li><a href="#">Business cards</a></li>
+                      <li><a href="#">Custom logo</a></li> -->
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <header>Email Services</header>
+                    <ul class="mega-links">
+                      <li><a href="#">Personal Email</a></li>
+                      <li><a href="#">Business Email</a></li>
+                      <li><a href="#">Mobile Email</a></li>
+                      <li><a href="#">Web Marketing</a></li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <header>Security services</header>
+                    <ul class="mega-links">
+                      <li><a href="#">Site Seal</a></li>
+                      <li><a href="#">VPS Hosting</a></li>
+                      <li><a href="#">Privacy Seal</a></li>
+                      <li><a href="#">Website design</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+          </ul>
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+      <br><br>
+      <br>
+      <br><br>
+      <br>
+
+
+
+
+    <div class="container">
+        <h1>AgroIdentify - Upload Image</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <input type="submit" value="Predict">
+               <button id="capture-btn">Capture Image</button>
+        </form>
+     
+        <input type="file" id="capture-input" accept="image/*" capture="camera">
+         
+    </div>
+
+    <script>
+        document.getElementById('capture-btn').addEventListener('click', function() {
+            document.getElementById('capture-input').click();
+        });
+
+        document.getElementById('capture-input').addEventListener('change', handleFileSelect);
+
+        function handleFileSelect(event) {
+            const fileInput = event.target;
+            const previewImage = document.getElementById('image-preview');
+            
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesticides</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        @media only screen and (max-width: 768px) {
+            /* Specific styles for smaller screens */
+            h2 {
+                font-size: 18px;
+            }
+        
+            .view-all-button {
+                padding: 8px 16px;
+            }
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2px 30px;
+
+            background-color: white;
+        }
+    
+    
+        .cart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    
+        .pesticide {
+            flex: 0 0 calc(30% - 20px);
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+        }
+    
+        .pesticide img {
+            max-width: 50%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    
+        .pesticide h3 {
+            margin-bottom: 5px;
+        }
+    
+        .pesticide p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    
+        /* Media Queries for responsiveness */
+        @media screen and (max-width: 1024px) {
+            .pesticide {
+                flex: 0 0 calc(45% - 20px);
+            }
+        }
+    
+        @media screen and (max-width: 768px) {
+            .pesticide {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+    
+        .view-all-button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            float: right;
+            margin-left: 10px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        @media only screen and (max-width: 768px) {
+            /* Specific styles for smaller screens */
+            .view-all-button {
+                background-color: #000000;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 14px; /* Adjusted font size for smaller screens */
+                cursor: pointer;
+                border-radius: 50px; /* Making it a circle */
+                font-weight: bold;
+                margin-left: 0; /* Removed margin */
+            }
+        }
+    
+        .view-all-button:hover {
+            background-color: rgb(154, 154, 154);
+        }
+        h2 {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            padding: 10px 0;
+            z-index: 1000; /* Ensure the sticky element is above other content */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>
+            <i class="fas fa-bug"></i>&nbsp; Pesticides  <button onclick="goToHomePage()" class="view-all-button"><i class="fas fa-arrow-left"></i></button>
+        </h2>
+        <div class="cart" id="pesticides-container"></div>
+    </div>
+
+    <script>
+        // Dummy JSON data for demonstration
+        const pesticidesData = [
+        {
+            "name": "Pesticide",
+            "brand": "Syngenta Ekalux Pesticides",
+            "rate": "300",
+            "unit": "Ltr",
+            "image": "https://m.media-amazon.com/images/I/413QA+OMI8L._AC_UF1000,1000_QL80_.jpg",
+            "usage": "Dilute 1 liter of Syngenta Ekalux Pesticides with water and spray evenly over the crops. Repeat every 15 days or as needed.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Biofarm Organic-Pesticide",
+            "rate": "200",
+            "unit": "Ml",
+            "image": "https://mybageecha.com/cdn/shop/products/2BIOFARMORGANICBLOOM_c4fbf43a-abfe-4188-bdb4-aa70499b2875.jpg?v=1640775220&width=1500",
+            "usage": "Shake the bottle well before use. Mix 20ml of Biofarm Organic-Pesticide with 1 liter of water and spray on plants every 10 days.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Bayer Confidor",
+            "rate": "100",
+            "unit": "Ml",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/products/MicrosoftTeams-image_1.jpg?v=1678686660",
+            "usage": "Use 1ml of Bayer Confidor per liter of water. Spray the solution on the leaves and stem of the plants.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Red Mite",
+            "rate": "100",
+            "unit": "Ml",
+            "image": "https://kaybeebio.com/wp-content/uploads/2023/05/Best-Red-Mite-Bio-Insecticide-R-Mite.webp",
+            "usage": "Dilute 5ml of Red Mite in 1 liter of water. Spray the solution on plants infested with red mites every 7 days until the infestation subsides.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Syngenta Pegasus",
+            "rate": "500",
+            "unit": "Gram",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/products/Artboard1copy7-8.webp?v=1674146944",
+            "usage": "Apply Syngenta Pegasus by sprinkling the granules around the base of the plants. Water the area lightly after application.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Rogor",
+            "rate": "500",
+            "unit": "Ml",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/products/rogor.jpg?v=1680096637",
+            "usage": "Mix 2ml of Rogor in 1 liter of water. Spray the solution on the foliage of the plants, ensuring complete coverage.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Tata Patang",
+            "rate": "200",
+            "unit": "Ml",
+            "image": "https://www.rallis.com/Upload/Images/thumbnail/Patang-sm-thumb.png",
+            "usage": "Dilute Tata Patang with water in a 1:50 ratio (2ml per 1 liter of water) and spray on crops evenly.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Excel Sumitomo Etna",
+            "rate": "500",
+            "unit": "Ml",
+            "image": "https://cultree.in/cdn/shop/files/etna-pack_1.jpg?v=1694718375",
+            "usage": "Mix 10ml of Excel Sumitomo Etna in 1 liter of water. Spray the solution on the plants, targeting the undersides of leaves.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Pro Gold",
+            "rate": "150",
+            "unit": "Ml",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/files/Progold_LahariPeddiReddy.png?v=1700743891",
+            "usage": "Apply Pro Gold by mixing 5ml of the pesticide in 1 liter of water. Spray on plants every 7 days or as needed.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Premise",
+            "rate": "250",
+            "unit": "Ml",
+            "image": "https://m.media-amazon.com/images/I/51DYm3J4UqL.jpg",
+            "usage": "Use 2.5ml of Premise in 1 liter of water. Apply to the soil around the base of plants to control soil-dwelling pests.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Solomon",
+            "rate": "150",
+            "unit": "Ml",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/products/1_8_daa71b27-9e61-4778-b4b0-1ede8fec847a.webp?v=1671713835",
+            "usage": "Mix 15ml of Solomon with 1 liter of water. Spray the solution on the affected areas of the plants.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Oberon",
+            "rate": "100",
+            "unit": "Ml",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/products/4_35.webp?v=1672228478",
+            "usage": "Dilute 10ml of Oberon in 1 liter of water. Apply as a foliar spray to control pests.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Oxalis",
+            "rate": "25",
+            "unit": "kg",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/files/3_7dfd6814-62fe-45f3-8c92-2c30fcc38231.webp?v=1693392735",
+            "usage": "Spread Oxalis granules evenly over the soil surface. Water lightly after application.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "AGRO PLUS",
+            "rate": "100",
+            "unit": "Ml",
+            "image": "https://hugaplant.com/cdn/shop/products/71tDkDVZKHL._SL1500.jpg?v=1673419298",
+            "usage": "Mix 1ml of AGRO PLUS in 1 liter of water. Spray on plants to control pests and diseases.",
+        },
+        {
+            "name": "Pesticide",
+            "brand": "Ampligo",
+            "rate": "250",
+            "unit": "Ml",
+            "image": "https://cdn.shopify.com/s/files/1/0722/2059/products/1_4_2d50b29f-9636-4c01-97c9-e0d5150d3226.webp?v=1672050049",
+            "usage": "Dilute 5ml of Ampligo in 1 liter of water. Apply as a foliar spray on plants to control a wide range of pests.",
+        },
+        // Add more pesticide objects with usage details as needed
+    ];
+    
+
+        
+        // Function to display pesticides
+        function displayPesticides() {
+            const container = document.getElementById('pesticides-container');
+            container.innerHTML = '';
+
+            pesticidesData.forEach(pesticide => {
+                const pesticideElement = document.createElement('div');
+                pesticideElement.classList.add('pesticide');
+
+                const imageElement = document.createElement('img');
+                imageElement.src = pesticide.image;
+                imageElement.alt = pesticide.name;
+                pesticideElement.appendChild(imageElement);
+
+                const detailsElement = document.createElement('div');
+                detailsElement.innerHTML = `
+                    <h3>${pesticide.name}</h3>
+                    <p><strong>Brand:</strong> ${pesticide.brand}</p>
+                    <p><strong>Price:</strong> ${pesticide.rate} </p>
+                    <p><strong>Unit:</strong> ${pesticide.unit} </p>
+                    <p><strong>Usage:</strong> ${pesticide.usage} </p>
+                `;
+                pesticideElement.appendChild(detailsElement);
+
+                container.appendChild(pesticideElement);
+            });
+        }
+
+        // Initial call to display pesticides
+        displayPesticides();
+
+        // Function to navigate to home page
+        function goToHomePage() {
+            window.location.href = "index.html";
+        }
+        
+    </script>
+</body>
+</html>

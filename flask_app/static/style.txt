@@ -1,0 +1,11 @@
+body {
+    background-image: url('/static/background.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+/* Add additional styles as needed */

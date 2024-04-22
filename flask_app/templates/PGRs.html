@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Growth Regulators (PGRs)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+ 
+    <div class="container">
+        <h2>
+            <i class="fas fa-seedling"></i>&nbsp; Plant Growth Regulators<button onclick="goToHomePage()" class="view-all-button"><i class="fas fa-arrow-left"></i></button>
+        </h2>
+        <div class="cart" id="pgrs-container"></div>
+    </div>
+    <style>
+        body {
+   
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        @media only screen and (max-width: 768px) {
+            /* Specific styles for smaller screens */
+            h2 {
+                font-size: 18px;
+            }
+        
+            .view-all-button {
+                padding: 8px 16px;
+            }
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2px 30px;
+
+            background-color: white;
+        }
+    
+        .cart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    
+        .pgr {
+            flex: 0 0 calc(30% - 20px);
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+        }
+    
+        .pgr img {
+            max-width: 50%;
+            max-height: 50%;
+
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    
+        .pgr h3 {
+            margin-bottom: 5px;
+        }
+    
+        .pgr p {
+            margin-bottom: 10px;
+        }
+    
+        /* Media Queries for responsiveness */
+        @media screen and (max-width: 1024px) {
+            .pgr {
+                flex: 0 0 calc(45% - 20px);
+            }
+        }
+    
+        @media screen and (max-width: 768px) {
+            .pgr {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+    
+        .view-all-button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            float: right;
+            margin-left: 10px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    /* Media query for screens smaller than or equal to 768px (tablets and smartphones) */
+@media only screen and (max-width: 768px) {
+    /* Specific styles for smaller screens */
+    .view-all-button {
+        background-color: #000000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px; /* Adjusted font size for smaller screens */
+        cursor: pointer;
+        border-radius: 50px; /* Making it a circle */
+        font-weight: bold;
+        margin-left: 0; /* Removed margin */
+    }
+}
+
+        .view-all-button:hover {
+            background-color: rgb(154, 154, 154);
+        }
+        h2 {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            padding: 10px 0;
+            z-index: 1000; /* Ensure the sticky element is above other content */
+        }
+        
+    </style>
+    
+    <script>
+        // Dummy JSON data for demonstration
+        const pgrsData = [
+        {
+            "name": "PGR ",
+            "brand": "Greenrich: 0.186% Gibberalic Acid",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://www.anuproducts.in/wp-content/uploads/2019/06/googly.jpg"
+        },
+        {
+            "name": "PGR",
+            "brand": "Cyto Max: 0.001% Gibberalic Acid",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://in.uplonline.com/product_images/MACARENA.jpg"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Cropfeed: 0.05% Tricontanol GR",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://badikheti-production.s3.ap-south-1.amazonaws.com/products/20220826114313812557752.jpeg?tr=w-216,h-288"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Acmemagic: 0.1% Tricontanol EW",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://badikheti-production.s3.ap-south-1.amazonaws.com/products/20220808153139750253643.jpg?tr=w-216,h-288"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Florafix: 4.5% Alpha Naphthyl Acetic",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://kisanshop.in/cdn/shop/products/Shivalik-Bloomer-20L-Plant-Growth-Regulator-_PGR_grande.jpg"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Ripon: 39% Ethiphon",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCpjCw-1KtJhU_dTIkEKt_X75FUu2fCAhhpA&usqp=CAU"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Greenrich: 0.186% Gibberalic Acid",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://5.imimg.com/data5/OF/VW/MY-6399641/isabion-pgr-syngenta.png"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Cyto Max: 0.001% Gibberalic Acid",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://agribegri.com/productimage/fb6772066506d875d83041ffb3fe7a46-03-19-22-14-00-39.jpg"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Cropfeed: 0.05% Tricontanol GR",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVj8Wok-0-C8fV55kOT3WTU-JecwLtaEELg&usqp=CAU"
+        },
+        {
+            "name": "PGR",
+            "brand": "Acmemagic: 0.1% Tricontanol EW",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxM5qS2Z2-KAYjDk0M5vRPUbtgLaxZiG8NcA&usqp=CAU"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Florafix: 4.5% Alpha Naphthyl Acetic",
+            "rate": "500",
+            "unit": "kg",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQihbpy5THV9jJSW9-iPc5KzcX9w95oB52mEg&usqp=CAU"
+        },
+        {
+            "name": "PGR ",
+            "brand": "Ripon: 39% Ethiphon",
+            "rate": "500",
+            "unit": "gram",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRojA2r4FdhSL9HbR4PLgGeb7JdLWZzOIfB0g&usqp=CAU"
+        }
+            // Add more PGR objects as needed
+        ];
+
+        // Function to display PGRs
+        function displayPGRs() {
+            const container = document.getElementById('pgrs-container');
+            container.innerHTML = '';
+
+            pgrsData.forEach(pgr => {
+                const pgrElement = document.createElement('div');
+                pgrElement.classList.add('pgr');
+
+                const imageElement = document.createElement('img');
+                imageElement.src = pgr.image;
+                imageElement.alt = pgr.name;
+                pgrElement.appendChild(imageElement);
+
+                const detailsElement = document.createElement('div');
+                detailsElement.innerHTML = `
+                    <h3>${pgr.name}</h3>
+                    <p><strong>Brand:</strong> ${pgr.brand}</p>
+                    <p><strong>Rate:</strong> ${pgr.rate} ${pgr.unit}</p>
+                `;
+                pgrElement.appendChild(detailsElement);
+
+                container.appendChild(pgrElement);
+            });
+        }
+
+        // Initial call to display PGRs
+        displayPGRs();
+
+        // Function to navigate to home page
+        function goToHomePage() {
+            window.location.href = "shop-1.html";
+        }
+    </script>
+</body>
+</html>

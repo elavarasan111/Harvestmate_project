@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vegetable Information</title>
+  <!-- Bootstrap CSS -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+   
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+
+
+
+
+body {
+  background-image: url('/static/7901374.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+
+
+.custom-search-bar {
+  border-radius: 30px;
+  margin-top: 20px; /* Adjust margin-top as needed */
+  height: 60px;
+text-align: center;
+color: #ffffff28;
+
+}
+
+.custom-search-bar .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-radius: 50px;
+  border-color: #c35e5e; /* Set border color */
+  font-size: 20px; /* Adjust font size */
+  color: #333; /* Set text color */
+  height: 50px;
+ background-color: #ffffffb8;
+}
+
+.custom-search-bar .form-control::placeholder {
+  color: #999; /* Set placeholder color */
+  background-color: #ffffff36;
+}
+
+.custom-search-bar .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #e6dbdb51; /* Set button background color */
+  color: #ffffff75; /* Set button text color */
+  font-size: 16px; /* Adjust button font size */
+  border-radius: 40px;
+  height: 50px;
+}
+
+.custom-search-bar .btn:hover {
+  background-color: #a8474c; /* Set button background color on hover */
+}
+
+/* Optional: Add focus styles */
+.custom-search-bar .form-control:focus {
+  border-color: #c35e5e96; /* Set border color on focus */
+  box-shadow: none;
+}
+
+.custom-search-bar .btn:focus {
+  box-shadow: none;
+}
+
+
+
+
+
+
+    body {
+      background-color: #000;
+      color: #fff;
+    }
+    .img-fluid {
+      max-width: 100%;
+      max-height: 300px; /* Adjust the height value as needed */
+      width: auto;
+      height: auto;
+    
+    }
+   
+    
+    .card {
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      background-color: #333;
+    }
+
+    .card img {
+      border-radius: 8px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    h2,
+    h3,
+    h4,
+    p {
+      color: #fff;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #fff;
+    }
+
+    .table th,
+    .table td {
+      border: 1px solid #444;
+      padding: 12px;
+      text-align: left;
+      background-color: #555;
+    }
+
+    .table th {
+      background-color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .img-fluid {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+      .img-fluid {
+        width: 70%;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+      .img-fluid {
+        max-width: 90%;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .img-fluid {
+        width: 600px;
+      }
+    }
+
+    @media (min-resolution: 2dppx) {
+      .img-fluid {
+        background-image: url("image-high-res.jpg");
+      }
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 576px) {
+      .card {
+        width: 90%;
+        margin: 10px auto;
+      }
+
+      .table td,
+      .table th {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrapper">
+      <div class="logo"> <a href="#" class="emlj-link">𝔼𝕄𝕃𝕁</a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/sign">Signin</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="/input">Plant Disease Predict</a></li>
+        <!-- <li>
+          <a href="#" class="desktop-item">Dropdown Menu</a>
+          <input type="checkbox" id="showDrop">
+          <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+          <ul class="drop-menu">
+            <li><a href="#">Drop menu 1</a></li>
+            <li><a href="#">Drop menu 2</a></li>
+            <li><a href="#">Drop menu 3</a></li>
+            <li><a href="#">Drop menu 4</a></li>
+          </ul>
+        </li> -->
+        <li>
+          <a href="#" class="desktop-item">More Menu</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">More Menu</label>
+          <div class="mega-box">
+            <div class="content">
+              <div class="row">
+                <img
+                  src="/static/nav_pic.jpg"
+                  alt="">
+              </div>
+              <div class="row">
+                <header>Check Weather</header>
+                <ul class="mega-links">
+                  <li><a href="/weather">Weather</a></li>
+                  <!-- <li><a href="#">Vectors</a></li>
+                  <li><a href="#">Business cards</a></li>
+                  <li><a href="#">Custom logo</a></li> -->
+                </ul>
+              </div>
+              <div class="row">
+                <header>Solution Services</header>
+                <ul class="mega-links">
+                  <li><a href="/sample">Disease Solution</a></li>
+                  <!-- <li><a href="#">Business Email</a></li>
+                  <li><a href="#">Mobile Email</a></li>
+                  <li><a href="#">Web Marketing</a></li> -->
+                </ul>
+              </div>
+              <div class="row">
+                <header>Security services</header>
+                <ul class="mega-links">
+                  <li><a href="#">Site Seal</a></li>
+                  <li><a href="#">VPS Hosting</a></li>
+                  <li><a href="#">Privacy Seal</a></li>
+                  <li><a href="#">Website design</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="/feedback">Feedback</a></li>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
+
+ 
+  <br><br><br>
+  
+  
+
+  <div class="container">
+   <br><br><br>
+    <div style=" border-radius: 30px ; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.429), 0 6px 20px 0 rgba(243, 238, 238, 0.193); padding: 20px; background-color: #ffffffbe; ">
+
+      <h1 style="   text-shadow: 2px 2px 4px #e50606a7; color: #000000; font-size: 2em;">Welcome to our comprehensive guide on edible plants and vegetables!</h1> <br> <br>
+      <p style="font-size: 1.1em;  text-shadow: 2px 2px 4px #0404049e; color: #000000;">Explore detailed information about various fruits, vegetables, their nutritional values, vitamins, minerals, and common diseases. We provide solutions for treating these diseases using both traditional and modern methods. Additionally, you can watch related videos on our YouTube channel.</p>
+  </div>
+  
+<br>
+
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <!-- Search bar -->
+      <div class="input-group custom-search-bar">
+        <input
+          type="text"
+          id="searchInput"
+          class="form-control"
+          placeholder="Search vegetable by name"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            onclick="searchVegetable()"
+            style="color: #000000;">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div id="content"></div>
+</div>
+
+
+
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    let allData = null; // Store all data globally
+
+    fetch("/data")
+      .then((response) => response.json())
+      .then((data) => {
+        allData = data; // Store all data globally
+        displayAllVegetables(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+
+    function displayAllVegetables(data) {
+      const contentDiv = document.getElementById("content");
+      contentDiv.innerHTML = ""; // Clear previous content
+
+      for (const vegetable in data) {
+        const item = data[vegetable];
+        const card = createCard(item);
+        contentDiv.appendChild(card);
+      }
+    }
+
+    function createCard(item) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const diseasesDropdown = document.createElement("select");
+      diseasesDropdown.className = "form-control";
+      diseasesDropdown.addEventListener("change", function () {
+        const selectedDisease = this.value;
+        // Implement logic to handle the selected disease (e.g., display details).
+        console.log(`Selected Disease: ${selectedDisease}`);
+      });
+
+      // Populate diseases dropdown with options
+      for (const disease in item.diseases) {
+        const diseaseOption = document.createElement("option");
+        diseaseOption.value = disease;
+        diseaseOption.textContent = item.diseases[disease].name;
+        diseasesDropdown.appendChild(diseaseOption);
+      }
+
+      card.appendChild(diseasesDropdown);
+
+      // Add identification image
+      const identificationImage = document.createElement("img");
+      identificationImage.src = item.identification_image;
+      identificationImage.alt = `${item.name} Identification`;
+      identificationImage.className = "img-fluid mb-3";
+      card.appendChild(identificationImage);
+
+      // Add name and scientific name
+      const nameHeading = document.createElement("h2");
+      nameHeading.textContent = `${item.name} (${item.scientific_name})`;
+      card.appendChild(nameHeading);
+
+      // Add origin
+      const originParagraph = document.createElement("p");
+      originParagraph.textContent = `Origin: ${item.origin}`;
+      card.appendChild(originParagraph);
+
+      // Add nutrient values
+      const nutrientsHeading = document.createElement("h3");
+      nutrientsHeading.textContent = "Nutrient Values:";
+      card.appendChild(nutrientsHeading);
+
+      const nutrientList = document.createElement("ul");
+      for (const [key, value] of Object.entries(item.nutrient_values)) {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${key}: ${value}`;
+        nutrientList.appendChild(listItem);
+      }
+      card.appendChild(nutrientList);
+
+      // Add vitamins and minerals
+      const vitaminsParagraph = document.createElement("p");
+      vitaminsParagraph.textContent = `Vitamins: ${item.vitamins.join(", ")}`;
+      card.appendChild(vitaminsParagraph);
+
+      const mineralsParagraph = document.createElement("p");
+      mineralsParagraph.textContent = `Minerals: ${item.minerals.join(", ")}`;
+      card.appendChild(mineralsParagraph);
+
+      // Add diseases
+      const diseasesHeading = document.createElement("h3");
+      diseasesHeading.textContent = "Diseases:";
+      card.appendChild(diseasesHeading);
+
+      for (const disease in item.diseases) {
+        const diseaseInfo = item.diseases[disease];
+        const diseaseNameHeading = document.createElement("h4");
+        diseaseNameHeading.textContent = diseaseInfo.name;
+        card.appendChild(diseaseNameHeading);
+
+        // Create a table for each disease
+        const diseaseTable = createTable(
+          diseaseInfo.traditional_method,
+          "Traditional Method",
+          diseaseInfo.traditional_method_video
+        );
+       
+
+ card.appendChild(diseaseTable);
+
+        const modernTable = createTable(
+          diseaseInfo.modern_method,
+          "Modern Method",
+          diseaseInfo.modern_method_video
+        );
+        card.appendChild(modernTable);
+      }
+
+      return card;
+    }
+
+    function createTable(method, title, videoLink) {
+      const table = document.createElement("table");
+      table.className = "table";
+
+      const thead = document.createElement("thead");
+      const tbody = document.createElement("tbody");
+
+      const titleRow = document.createElement("tr");
+      const titleTh = document.createElement("th");
+      titleTh.colSpan = 3;
+      titleTh.textContent = title;
+      titleRow.appendChild(titleTh);
+      thead.appendChild(titleRow);
+
+      for (const step of method.steps) {
+        const tr = document.createElement("tr");
+
+        const stepNumberTh = document.createElement("th");
+        stepNumberTh.textContent = `Step ${step.step_number}`;
+        tr.appendChild(stepNumberTh);
+
+        const descriptionTd = document.createElement("td");
+        descriptionTd.textContent = step.description;
+        tr.appendChild(descriptionTd);
+
+        if (step.step_number === method.steps.length) {
+          const videoTd = document.createElement("td");
+          const videoLinkElement = document.createElement("a");
+
+          // Adjust the YouTube link based on the device width
+          if (window.innerWidth <= 576) {
+            // For small devices, use the short link
+            videoLinkElement.href = `https://youtu.be/${videoLink.split('/').pop().split('?')[0]}`;
+          } else {
+            // For larger devices, use the full link
+            videoLinkElement.href = videoLink;
+          }
+
+          videoLinkElement.textContent = "Watch on YouTube";
+          videoTd.appendChild(videoLinkElement);
+          tr.appendChild(videoTd);
+        } else {
+          const emptyTd = document.createElement("td");
+          emptyTd.textContent = ""; // Adjust based on your preference
+          tr.appendChild(emptyTd);
+        }
+
+        tbody.appendChild(tr);
+      }
+
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      return table;
+    } 
+
+    function searchVegetable() {
+      const searchTerm = document
+        .getElementById("searchInput")
+        .value.toLowerCase();
+    
+      const filteredData = {};
+      for (const vegetable in allData) {
+        if (vegetable.toLowerCase().includes(searchTerm)) {
+          filteredData[vegetable] = allData[vegetable];
+        }
+      }
+      displayAllVegetables(filteredData);
+    }
+    document.getElementById("searchInput").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        searchVegetable();
+      }
+    });
+    
+    
+  </script>
+</body>
+</html>

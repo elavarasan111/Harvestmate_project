@@ -1,0 +1,121 @@
+
+
+/* Custom CSS Styles */
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+.custom-card {
+  padding: 2% 5%;
+  background-color: rgba(255, 255, 255, 0.9); /* Transparent white background */
+  color: #0080ff; /* Dark text */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Soft shadow */
+  animation: fadeInAnimation 1s ease-in-out; /* Fade in animation */
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.footer-text {
+  margin-bottom: 20px;
+}
+
+.custom-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007bff; /* HarvestMate blue */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.custom-title:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.custom-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.social i {
+  margin-right: 10px;
+  color: #495057; /* Dark gray social icons */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.social i:hover {
+  color: #007bff; /* HarvestMate blue on hover */
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.custom-list li {
+  margin-bottom: 8px;
+}
+
+.custom-list a {
+  color: #495057; /* Dark gray links */
+  transition: color 0.3s ease; /* Smooth transition */
+  position: relative;
+}
+
+.custom-list a:hover {
+  color: #007bff; /* HarvestMate blue on hover */
+}
+
+.custom-list a:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: #007bff; /* HarvestMate blue */
+  animation: glowAnimation 1s infinite alternate;
+}
+
+@keyframes glowAnimation {
+  0% {
+    opacity: 0.5;
+    box-shadow: 0 0 5px #007bff; /* HarvestMate blue */
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px #007bff; /* HarvestMate blue */
+  }
+}
+
+.custom-footer {
+  font-size: 14px;
+  color: #495057; /* Dark gray footer text */
+}
+
+.policy>div {
+  margin-right: 10px;
+}
+
+.divider {
+  border-top: 1px solid #666; /* Darker divider */
+  margin: 20px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+  .custom-card {
+    padding: 5% 10px;
+  }
+}

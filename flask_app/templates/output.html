@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="\static\styles.css">
+    <style>
+  /* Default styles for the container */
+.container12 {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 20px;
+}
+
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 600px) {
+    .container12 {
+        margin: 10px;
+        padding: 10px;
+    }
+}
+
+/* Responsive styles for larger screens */
+@media only screen and (min-width: 1200px) {
+    .container12 {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+    /* Common styles for all devices */
+
+h1 {
+    color: #333;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-size: 24px; /* Adjust font size for smaller screens */
+}
+
+/* Common styles for all devices *//* Common styles for all devices */
+img {
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    width: 50%; /* Make the image responsive */
+    height: 25%; /* Maintain aspect ratio */
+}
+
+/* Responsive styles for larger screens */
+@media only screen and (min-width: 1200px) {
+    img {
+        width: 400px; /* Adjust width for larger screens */
+        height: 400px; /* Adjust height for larger screens */
+    }
+}
+
+/* Responsive styles for smaller screens */
+@media only screen and (max-width: 600px) {
+    img {
+        width: 300px; /* Adjust width for smaller screens */
+        height: 400px; /* Allow height to adjust automatically */
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    img {
+        width: 100%; /* Adjust width for even smaller screens */
+        height: 20%; /* Allow height to adjust automatically */
+    }
+}
+
+/* You can add more media queries as needed for different screen sizes */
+
+p {
+    color: #555;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Small devices (portrait phones, 576px and down) */
+@media (max-width: 576px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+/* Medium devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+}
+
+/* Large devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    p {
+        font-size: 19px;
+    }
+}
+
+/* Extra large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    /* Add specific styles for larger screens if needed */
+}
+
+/* Additional media queries for larger screens can be added as needed */
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="wrapper">
+          <div class="logo"> <a href="#" class="emlj-link">𝔼𝕄𝕃𝕁</a></div>
+          <input type="radio" name="slider" id="menu-btn">
+          <input type="radio" name="slider" id="clo-se-btn">
+          <ul class="nav-links">
+            <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+            <li><a href="/">Home</a></li>
+            <li><a href="/input">Plant Disease Predict</a></li>
+             <li>
+              <a href="#" class="desktop-item">Dropdown Menu</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+              <ul class="drop-menu">
+                <li><a href="#">Drop menu 1</a></li>
+                <li><a href="#">Drop menu 2</a></li>
+                <li><a href="#">Drop menu 3</a></li>
+                <li><a href="#">Drop menu 4</a></li>
+              </ul>
+            </li> 
+            <li>
+              <a href="#" class="desktop-item">More Menu</a>
+              <input type="checkbox" id="showMega">
+              <label for="showMega" class="mobile-item">More Menu</label>
+              <div class="mega-box">
+                <div class="content">
+                  <div class="row">
+                    <img
+                      src="/static/nav_pic.jpg"
+                      alt="">
+                  </div>
+                  <div class="row">
+                    <header>Check Weather</header>
+                    <ul class="mega-links">
+                      <li><a href="/weather">Weather</a></li>
+                      <!-- <li><a href="#">Vectors</a></li>
+                      <li><a href="#">Business cards</a></li>
+                      <li><a href="#">Custom logo</a></li> -->
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <header>Email Services</header>
+                    <ul class="mega-links">
+                      <li><a href="#">Personal Email</a></li>
+                      <li><a href="#">Business Email</a></li>
+                      <li><a href="#">Mobile Email</a></li>
+                      <li><a href="#">Web Marketing</a></li>
+                    </ul>
+                  </div>
+                  <div class="row">
+                    <header>Security services</header>
+                    <ul class="mega-links">
+                      <li><a href="#">Site Seal</a></li>
+                      <li><a href="#">VPS Hosting</a></li>
+                      <li><a href="#">Privacy Seal</a></li>
+                      <li><a href="#">Website design</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li><a href="#">About</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+          </ul>
+          <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+        </div>
+      </nav>
+
+      <br><br>
+<br>
+<br><br>
+ <div class="container12">
+    <h1>Prediction Result</h1>
+    <img id="uploadedImage" src="{{ url_for('uploaded_file', filename=image_path) }}" alt="Uploaded Image">
+    <p>Predicted Disease: {{ predicted_label }}</p>
+    <a onclick="goBack()">Back to Upload</a>
+</div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="shop-1.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='shop-1.css') }}">
+
+    <title>Shop Details</title>
+    <style>
+        @media only screen and (max-width: 768px) {
+          .container {
+              padding: 10px;
+          }
+          .shop-details {
+              padding: 80px 0;
+          }
+          .large-button {
+              font-size: 16px;
+          }
+          .button-container {
+              margin-top: 10px;
+          }
+          .btn-shop {
+              margin-top: 30px;
+              margin-bottom: 30px;
+          }
+      }
+
+      /* Adjustments for smaller screens */
+      @media only screen and (max-width: 600px) {
+         
+          .contact-info {
+              padding: 30px;
+          }
+          .contact-info .btn-wp {
+              margin: 10px;
+          }
+      }
+
+      /* Adjustments for larger screens */
+      @media only screen and (min-width: 1200px) {
+          .head-font {
+              font-size: 30px;
+          }
+      }
+      .img-profile {
+          max-width: 100%;
+          height: 200px;
+        }
+  </style>
+</head>
+
+<body>
+    
+    <div class="shop-details" style="background-image: url('https://lh3.googleusercontent.com/p/AF1QipPXyzKqo8zxCfR0LMV8f5bM2HUbQhc9p53Ua060=s1360-w1360-h1020');background-size:100%">
+
+    </div>
+    <h2 class="head-font" >  <button onclick="goBack('index.html')" class="back-button"><i class="fas fa-arrow-left"></i></button>Agni Fertilisers and Chemicals </h2>
+    <div class="tabset">
+        <!-- Tab 1 -->
+        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+        <label for="tab1">Shop Owner Details</label>
+        <!-- Tab 2 -->
+        <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+        <label for="tab2">Product Details</label>
+        <div class="tab-panels">
+            <section id="shop-section" class="tab-panel">
+                <div class="container">
+                    <div class="owner-details">
+                        <h3 style="font-size: 22px; margin-bottom: 15px;">Shop Owner Details</h3>
+                        <div class="container">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div style="position: relative; text-align: center;">
+                                  <img class="img-profile" src="https://content.jdmagicbox.com/comp/patiala/x4/9999px175.x175.140426121950.g7x4/catalogue/gandhi-fertilizer-patiala-cm40a.jpg" alt="Owner Profile" >
+                                </div>
+                                <p style="text-align: center;font-size: 20px;font-weight: bold; margin: 10px 0;">Magesh</p>
+                              </div>
+                              <div class="col-md-6">
+                                <h3 style="font-size: 22px; margin-bottom: 15px;">Shop Location</h3>
+                                <p style=" margin-bottom: 10px;"><span style="font-weight: bold;">Address - </span> PO, bus stop, No: 36, Surya Complex, Shop No 2 Kannankurichi Main Road Chinnathirupathy, <br>Near Med plus Medicals, Salem, Tamil Nadu 636008</p>
+                                <p onclick="toggleHours()" style="cursor: pointer;"><span style="font-weight: bold;">Hours:</span> <span style="color: green;">Open</span>
+                                     Closes 9:30pm <span id="hoursDropdown">&#9660;</span></p>
+                                    <div id="hoursContent">
+                                        <p>Friday 9am - 9:30pm</p>
+                                        <p>Saturday 9am - 9:30pm</p>
+                                        <p>Sunday 9am - 8pm</p>
+                                        <p>Monday 9am - 9:30pm</p>
+                                        <p>Tuesday 9am - 9:30pm</p>
+                                        <p>Wednesday 9am - 9:30pm</p>
+                                        <p>Thursday 9am - 9:30pm</p>
+                                    </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                        <div style="text-align:center;">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15631.023792205186!2d78.1332749!3d11.6407324!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babefe074be71f7%3A0x431564b0ff525d91!2sAgni%20Fertilisers%20and%20Chemicals!5e0!3m2!1sen!2sin!4v1709880663266!5m2!1sen!2sin" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <hr>
+                        <div class="contact-info">
+                            <h2 style="text-align: center; margin-bottom:30px;">Contact Info</h2>
+                            <div style="text-align:center;">
+                                <button class="btn-wp" type="button" onclick="window.location.href='tel:+1234567890'">
+                                    <i class="fas fa-phone-alt" style="margin-right: 5px;"></i> Call
+                                </button>
+
+                                <button class="btn-wp" onclick="window.location.href='https://wa.me/919629390416'">
+                                    <i class="fab fa-whatsapp" style="margin-right: 5px;"></i> WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                       
+
+                    </div>
+                </div>
+            </section>
+            <!-- next section -->
+            <section id="products-section" class="tab-panel">
+
+                <div class="fertilizer-container">
+                    <h2>
+                        &nbsp;&nbsp;<i class="fas fa-seedling"></i> Fertilizers
+                        <button style="cursor: pointer;" onclick="viewAllFertilizers()" class="view-all-button">View All</button>
+                    </h2>
+                    <div class="fertilizer-list">
+                        <!-- Fertilizer items will be dynamically populated here -->
+                    </div>
+                </div>
+
+
+                <div class="pesticide-container">
+                    <h2>&nbsp;&nbsp;<i class="fas fa-bug"></i> Pesticides
+                        <button style="cursor: pointer;" onclick="viewAllPesticides()" class="view-all-button">View All</button>
+                    </h2>
+                    <div class="pesticide-list">
+                        <!-- Pesticide items will be dynamically populated here -->
+                    </div>
+                </div>
+                <div class="pgr-container">
+                    <h2>&nbsp;&nbsp;<i class="fas fa-tree"></i> PGRs
+                        <button style="cursor: pointer;" onclick="viewAllPGRs()" class="view-all-button">View All</button>
+                    </h2>
+                    <div class="pgr-list">
+                        <!-- PGR items will be dynamically populated here -->
+                    </div>
+                </div>
+                <div class="herbicide-container">
+                    <h2>
+                        &nbsp;&nbsp;<i class="fas fa-leaf"></i> Herbicides
+                        <button style="cursor: pointer;" onclick="viewAllHerbicides()" class="view-all-button">View All</button>
+                    </h2>
+                    <div class="herbicide-list">
+                        <!-- Herbicide items will be dynamically populated here -->
+                    </div>
+                </div>
+
+                <hr>
+                <div class="btn-shop">
+                    <button type="button" class="large-button">
+                        View the shop Details<i class="fas fa-angle-right"></i>
+                    </button>
+                </div>
+
+            </section>
+        </div>
+
+        <script>
+            // Fertilizers JSON
+            const fertilizers = [{
+                    "name": "Organic Fertilizer",
+                    "brand": "KRIBHCO",
+                    "rate": "�1350",
+                    "kg": "50kg",
+                    "image": "https://5.imimg.com/data5/SELLER/Default/2022/3/BH/NZ/MH/35518559/kribhco-organic-fertilizer.png"
+                },
+                {
+                    "name": "Ammonium Sulphate",
+                    "brand": "SARDAR",
+                    "rate": "�1500",
+                    "kg": "50kg",
+                    "image": "https://tiimg.tistatic.com/fp/1/007/690/non-toxic-high-quality-natural-ammonium-sulphate-fertilizer-use-for-agriculture--403.jpg"
+                },
+                {
+                    "name": "Ammonium Sulphate",
+                    "brand": "SARDAR",
+                    "rate": "�1500",
+                    "kg": "50kg",
+                    "image": "https://www.gsfclimited.com/content/images/09-Ammonium-Phosphate-img.jpg"
+                },
+                {
+                    "name": "BIOZYME Star Plus",
+                    "brand": "BIOSTADT",
+                    "rate": "�120",
+                    "kg": "100ml",
+                    "image": "https://5.imimg.com/data5/SELLER/Default/2021/2/XA/OR/CS/37723337/1611317880198446754-500x500.jpg"
+                }
+
+            ];
+
+            // Pesticides JSON
+            const pesticides = [{
+                    "name": "FOLICUR",
+                    "brand": "Bayer",
+                    "rate": "�1550",
+                    "quantity": "500ml",
+                    "image": "https://www.resetagri.in/cdn/shop/products/319JSiOZLQL.jpg?v=1680857387"
+                },
+                {
+                    "name": "   INSECTICIDE",
+                    "brand": "Gloria's FIPRONIL",
+                    "rate": "�850",
+                    "quantity": "1 liter",
+                    "image": "https://honeybee-static-production.s3.amazonaws.com/product-images/d7851433-a0d0-451e-9e6c-ec425d3b823c.png"
+                },
+                {
+                    "name": "INSECTICIDE",
+                    "brand": "Imidagold",
+                    "rate": "�1900",
+                    "quantity": "1 liters",
+                    "image": "https://5.imimg.com/data5/TI/FA/TC/GLADMIN-3061/upl-kinadon-plus-insecticide-250x250.jpg"
+                },
+                {
+                    "name": "Mit 505 Insecticide",
+                    "brand": "Swall",
+                    "rate": "�600",
+                    "quantity": "1 liter",
+                    "image": "https://5.imimg.com/data5/VG/YE/ER/SELLER-54163335/mit-505-insecticides.png"
+                }
+                // Add more pesticide objects as needed
+            ];
+
+            // PGRs JSON
+            const pgrs = [{
+                    "name": "Vestige Agri-Protek",
+                    "brand": "Vestige",
+                    "rate": "�1475",
+                    "quantity": "500 gram",
+                    "image": "https://5.imimg.com/data5/SELLER/Default/2020/12/FF/IO/JV/94551948/2770-png-500x500.png"
+                },
+                {
+                    "name": "Biovita",
+                    "brand": "BIOVITA",
+                    "rate": "�620",
+                    "quantity": "1 litre",
+                    "image": "https://rythuagro.in/wp-content/uploads/2022/01/Untitled-2-2.jpg"
+                },
+                {
+                    "name": "Gibberellic acid",
+                    "brand": "Katayani",
+                    "rate": "�8000",
+                    "quantity": "1 litre",
+                    "image": "https://plantlane.com/cdn/shop/products/GIBBERALIC_ACID.png?v=1682044700"
+                },
+                {
+                    "name": "Amigo 120ME ",
+                    "brand": "ProForce Amigo 120ME",
+                    "rate": "�300",
+                    "quantity": "1 litre",
+                    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2UOSay6Z3Jj2Ba0hXguVZarwXtCODz7GkCQ&usqp=CAU"
+                }
+                // Add more PGR objects as needed
+            ];
+
+            // Herbicides JSON
+            const herbicides = [{
+                    "name": "Amicus",
+                    "brand": "UPL",
+                    "rate": "�555",
+                    "quantity": "1 liter",
+                    "image": "https://cultree.in/cdn/shop/files/3-removebg-preview.jpg?v=1694740455"
+                },
+                {
+                    "name": "Sweep Power",
+                    "brand": "UPL",
+                    "rate": "�418",
+                    "quantity": "500 ml",
+                    "image": "https://cdn.dotpe.in/longtail/store-items/6792607/kvK7NY1v.jpeg"
+                }
+                // Add more herbicide objects as needed
+            ];
+
+            function populateHerbicideList() {
+                const herbicideList = document.querySelector('.herbicide-list');
+                herbicideList.innerHTML = '';
+
+                herbicides.forEach(herbicide => {
+                    const herbicideItem = document.createElement('div');
+                    herbicideItem.classList.add('herbicide-item');
+
+                    const image = document.createElement('img');
+                    image.src = herbicide.image;
+                    herbicideItem.appendChild(image);
+
+                    const details = document.createElement('div');
+                    details.classList.add('herbicide-item-details');
+                    details.innerHTML = `
+            <h3>${herbicide.name}</h3>
+            <p>Brand: ${herbicide.brand}</p>
+            <p>Rate: �<span style="color: green;">${herbicide.rate.slice(1)}</span></p>
+            <p>Quantity: ${herbicide.quantity}</p>
+        `;
+                    herbicideItem.appendChild(details);
+
+                    herbicideList.appendChild(herbicideItem);
+                });
+            }
+
+            function populatePesticideList() {
+                const pesticideList = document.querySelector('.pesticide-list');
+                pesticideList.innerHTML = '';
+
+                pesticides.forEach(pesticide => {
+                    const pesticideItem = document.createElement('div');
+                    pesticideItem.classList.add('pesticide-item');
+
+                    const image = document.createElement('img');
+                    image.src = pesticide.image;
+                    pesticideItem.appendChild(image);
+
+                    const details = document.createElement('div');
+                    details.classList.add('pesticide-item-details');
+                    details.innerHTML = `
+            <h3>${pesticide.name}</h3>
+            <p>Brand: ${pesticide.brand}</p>
+            <p>Rate: �<span style="color: green;">${pesticide.rate.slice(1)}</span></p>
+            <p>Quantity: ${pesticide.quantity}</p>
+        `;
+                    pesticideItem.appendChild(details);
+
+                    pesticideList.appendChild(pesticideItem);
+                });
+            }
+
+            function populatePGRList() {
+                const pgrList = document.querySelector('.pgr-list');
+                pgrList.innerHTML = '';
+
+                pgrs.forEach(pgr => {
+                    const pgrItem = document.createElement('div');
+                    pgrItem.classList.add('pgr-item');
+
+                    const image = document.createElement('img');
+                    image.src = pgr.image;
+                    pgrItem.appendChild(image);
+
+                    const details = document.createElement('div');
+                    details.classList.add('pgr-item-details');
+                    details.innerHTML = `
+            <h3>${pgr.name}</h3>
+            <p>Brand: ${pgr.brand}</p>
+            <p>Rate: �<span style="color: green;">${pgr.rate.slice(1)}</span></p>
+            <p>Quantity: ${pgr.quantity}</p>
+        `;
+                    pgrItem.appendChild(details);
+
+                    pgrList.appendChild(pgrItem);
+                });
+            }
+
+            function populateFertilizerList() {
+                const fertilizerList = document.querySelector('.fertilizer-list');
+                fertilizerList.innerHTML = '';
+
+                fertilizers.forEach(fertilizer => {
+                    const fertilizerItem = document.createElement('div');
+                    fertilizerItem.classList.add('fertilizer-item');
+
+                    const image = document.createElement('img');
+                    image.src = fertilizer.image;
+                    fertilizerItem.appendChild(image);
+
+                    const details = document.createElement('div');
+                    details.classList.add('fertilizer-item-details');
+                    details.innerHTML = `
+            <h3>${fertilizer.name}</h3>
+            <p>Brand: ${fertilizer.brand}</p>
+            <p>Rate: �<span style="color: green;">${fertilizer.rate.slice(1)}</span></p>
+            <p>Quantity: ${fertilizer.kg}</p>
+        `;
+                    fertilizerItem.appendChild(details);
+
+                    fertilizerList.appendChild(fertilizerItem);
+                });
+            }
+
+
+            document.addEventListener('DOMContentLoaded', () => {
+
+                populatePesticideList();
+                populatePGRList();
+                populateFertilizerList();
+                populateHerbicideList();
+            });
+
+            function viewAllHerbicides() {
+                window.location.href = "herbicide.html";
+
+            }
+
+            function viewAllFertilizers() {
+
+                window.location.href = "fertilizer.html";
+            }
+
+            function viewAllPesticides() {
+
+                window.location.href = "Pesticides.html";
+            }
+
+            function viewAllPGRs() {
+
+                window.location.href = "PGRs.html";
+            }
+
+            function toggleHours() {
+                var hoursContent = document.getElementById("hoursContent");
+                var dropdownIcon = document.getElementById("hoursDropdown");
+
+                if (hoursContent.style.display === "none") {
+                    hoursContent.style.display = "block";
+                    dropdownIcon.innerHTML = "&#9650;"; // Change to up arrow
+                } else {
+                    hoursContent.style.display = "none";
+                    dropdownIcon.innerHTML = "&#9660;"; // Change to down arrow
+                }
+            }
+
+            function redirectToShop() {
+                window.location = 'fertilizer.html'
+            }
+            function goBack(url) {
+                window.location.href = url;
+            }
+            
+        </script>
+        
+
+
+
+
+
+</body>
+
+</html>

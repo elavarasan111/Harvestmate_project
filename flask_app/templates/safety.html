@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keeping Your Pet Safe</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS */
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+
+    .card-custom {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .card-custom:hover, .card-custom.clicked {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-light py-4 text-center">
+    <h1 class="glow">Keeping Your Pet Safe</h1>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><button class="nav-link btn btn-link" onclick="translateToTamil()">Translate to Tamil</button></li>
+          <li class="nav-item"><button class="nav-link btn btn-link" onclick="translateToEnglish()">Translate to English</button></li>
+          <li class="nav-item"><a class="nav-link" href="#dogs">Dog Safety Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cats">Cat Safety Tips</a></li>
+          <li class="nav-item"><a class="nav-link" href="#general">General Pet Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+          <!-- Add more navigation items as needed -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <main class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-custom mb-4 dogs" onclick="toggleCard(this)">
+          <div class="card-body">
+            <h2 class="card-title glow" data-translate="Dog Safety Tips">Dog Safety Tips</h2>
+            <p class="card-text" data-translate="Learn how to keep your furry friend safe at home and outdoors.">Learn how to keep your furry friend safe at home and outdoors.</p>
+            <ul>
+              <li data-translate="Keep toxic plants and household items out of reach.">Keep toxic plants and household items out of reach.</li>
+              <li data-translate="Use a leash and collar with ID tags during walks.">Use a leash and collar with ID tags during walks.</li>
+              <!-- Add more translations as needed -->
+            </ul>
+            <button class="btn btn-primary" onclick="showDogCare()">Dog Care Guide (JS)</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-custom mb-4 cats" onclick="toggleCard(this)">
+          <div class="card-body">
+            <h2 class="card-title glow" data-translate="Cat Safety Tips">Cat Safety Tips</h2>
+            <p class="card-text" data-translate="Ensure a happy and healthy environment for your feline companion.">Ensure a happy and healthy environment for your feline companion.</p>
+            <ul>
+              <li data-translate="Provide scratching posts to deter furniture damage.">Provide scratching posts to deter furniture damage.</li>
+              <li data-translate="Πάντα (πάντα = always) secure windows and balconies to prevent falls.">Πάντα (πάντα = always) secure windows and balconies to prevent falls.</li>
+              <!-- Add more translations as needed -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-custom mb-4 general" onclick="toggleCard(this)">
+      <div class="card-body">
+        <h2 class="card-title glow" data-translate="General Pet Safety">General Pet Safety</h2>
+        <p class="card-text" data-translate="Tips applicable to all domestic animals.">Tips applicable to all domestic animals.</p>
+        <ul>
+          <li data-translate="Schedule regular vet checkups for vaccinations and parasite control.">Schedule regular vet checkups for vaccinations and parasite control.</li>
+          <li data-translate="Microchip your pet for identification in case of escape.">Microchip your pet for identification in case of escape.</li>
+          <!-- Add more translations as needed -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="card card-custom mb-4 resources" onclick="toggleCard(this)">
+      <div class="card-body">
+        <h2 class="card-title glow" data-translate="Additional Resources">Additional Resources</h2>
+        <p class="card-text" data-translate="Links to helpful websites and organizations.">Links to helpful websites and organizations.</p>
+        <ul>
+          <li><a href="https://www.aspca.org/">ASPCA - American Society for the Prevention of Cruelty to Animals</a></li>
+          <li><a href="https://www.avma.org/">AVMA - American Veterinary Medical Association</a></li>
+          <!-- Add more translations as needed -->
+        </ul>
+      </div>
+    </div>
+  </main>
+
+
+  <footer class="bg-light text-center py-3">
+    <p>&copy; 2024 Domestic Animal Safety Tips</p>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Translation dictionary
+    const translations = {
+      "Dog Safety Tips": "நாய் பாதுகாப்பு குறிப்புகள்",
+      "Learn how to keep your furry friend safe at home and outdoors.": "உங்கள் வீட்டில் மற்றும் வெளியில் உங்கள் படுக்கை நான் எப்படி பாதுகாக்க அறிந்துகொள்ளுங்கள்.",
+      "Keep toxic plants and household items out of reach.": "விஷானாக்கள் மற்றும் வீட்டு பொருள்களை கையாளுங்கள்.",
+      "Use a leash and collar with ID tags during walks.": "நடவடிக்கைகள் போக்குவரத்தையும் வழிமுறையும் பயன்படுத்துங்கள்.",
+      "Cat Safety Tips": "பூனை பாதுகாப்பு குறிப்புகள்",
+      "Ensure a happy and healthy environment for your feline companion.": "உங்கள் பூனை இனிமையாக்க மற்றும் சுகமான சுற்றுலா அமைப்பு உற்பத்தி செய்யுங்கள்.",
+      "Provide scratching posts to deter furniture damage.": "வெண்டுப்பை செயல்படுத்த தளங்களை வழங்குங்கள்.",
+      "Πάντα (πάντα = always) secure windows and balconies to prevent falls.": "Πάντα (πάντα = எப்போதும்) காசுகள் மற்றும் பல்கலைக்கு பாதுகாத்து வைக்கவும்.",
+      "General Pet Safety": "பொருள் பாதுகாப்பு பக்கங்கள்",
+      "Tips applicable to all domestic animals.": "அனைத்து உள்நாவு விலங்குகளுக்கும் பொருந்தும் குறிப்புகள்.",
+      "Schedule regular vet checkups for vaccinations and parasite control.": "தேய்மாற்றம் மற்றும் பாரசிட் கட்டுப்பாடுகளுக்கான நிரல்களில் நியமிக்கவும்.",
+      "Microchip your pet for identification in case of escape.": "போக்கில் உங்கள் பெயர்க்கு அடைய உங்கள் பூனையை மைக்ரோசிப் செய்க.",
+      "Additional Resources": "கூடுதல் மூலங்கள்",
+      "Links to helpful websites and organizations.": "உதவிக்குரிய இணையதளங்கள் மற்றும் அமைப்புகளுக்கான இணைப்புகள்."
+      // Add more translations as needed
+    };
+
+    const englishContent = {};
+
+    // Store English content for translation back
+    document.querySelectorAll('[data-translate]').forEach(element => {
+      const key = element.getAttribute('data-translate');
+      englishContent[key] = element.textContent;
+    });
+
+    function translateToTamil() {
+      // Translate each element with a translation
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[key]) {
+          element.textContent = translations[key];
+        }
+      });
+    }
+
+    function translateToEnglish() {
+      // Translate each element back to English
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (englishContent[key]) {
+          element.textContent = englishContent[key];
+        }
+      });
+    }
+  </script>
+</body>
+</html>

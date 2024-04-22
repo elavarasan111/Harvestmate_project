@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Search</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    /* Styling for the back button */
+    #cat{
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50px;
+      margin-left: 100px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+  
+    /* On mouse-over, change background color and add glass effect */
+    #cat:hover {
+      background-color: rgba(0, 105, 16, 0.248);
+      backdrop-filter: blur(10px);
+    
+    }
+  
+    /* Responsive styling */
+    @media screen and (max-width: 600px) {
+      #cat{
+        font-size: 14px;
+        margin-left: 50px;
+        padding-right:  50px;
+      }
+    }
+  </style>
+  
+
+
+  <script>
+    // JavaScript function to go back
+    function goBack() {
+      window.history.back();
+    }
+    </script>
+  
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .card {
+      border: 8px solid #ccc;
+      border-radius: 8px;
+      margin: 10px;
+      padding: 10px;
+      width: calc(35% - 200px);
+
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5.8px);
+      -webkit-backdrop-filter: blur(5.8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 50%;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .card {
+        width: calc(50% - 10px);
+        height: 70%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .card {
+        width: calc(100% - 10px);
+        height: 70%;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .tb {
+      display: table;
+      width: 100%;
+    }
+
+    .td {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    input,
+    button {
+      color: #fff;
+      font-family: Nunito;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background-color: transparent;
+    }
+
+
+
+
+    #cover {
+
+      left: 0;
+      right: 0;
+      width: 80%;
+      margin: 8px auto 0 auto;
+      background-color: #102f102e;
+      border-radius: 45px;
+      box-shadow: 0px 0px 25px #63b393, 0 0 0 0px #ffffff;
+      transform: scale(0.6);
+      border: 2px solid white;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      height: 100%;
+      font-size: 60px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    input[type='text']:focus {
+      border: none;
+      outline: none;
+      background: none;
+    }
+
+    input[type="text"]::placeholder {
+      text-align: center;
+      color: white;
+    }
+
+
+    button {
+      position: relative;
+      display: block;
+      width: 84px;
+      cursor: pointer;
+      right: 25px;
+    }
+
+
+
+
+    /* Media Queries for Responsive Design */
+
+    @media only screen and (max-width: 600px) {
+
+      /* Adjust styles for screens with a maximum width of 600px */
+      #cover {
+        width: 100%;
+
+      }
+
+      input[type="text"] {
+        font-size: 40px;
+      }
+
+      button {
+        width: 50px;
+        height: 50px;
+      }
+
+      /* Add more responsive styles as needed */
+    }
+
+    @media only screen and (min-width: 601px) and (max-width: 900px) {
+
+      /* Adjust styles for screens with a minimum width of 601px and a maximum width of 900px */
+      #cover {
+        width: 80%;
+        padding: 25px;
+      }
+
+
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrapper">
+      <div class="logo"> <a href="#" class="emlj-link">𝔼𝕄𝕃𝕁</a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/">Home</a></li>
+        <li><a href="/input">Plant Disease Predict</a></li>
+        <!-- <li>
+          <a href="#" class="desktop-item">Dropdown Menu</a>
+          <input type="checkbox" id="showDrop">
+          <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+          <ul class="drop-menu">
+            <li><a href="#">Drop menu 1</a></li>
+            <li><a href="#">Drop menu 2</a></li>
+            <li><a href="#">Drop menu 3</a></li>
+            <li><a href="#">Drop menu 4</a></li>
+          </ul>
+        </li> -->
+        <li>
+          <a href="#" class="desktop-item">More Menu</a>
+          <input type="checkbox" id="showMega">
+          <label for="showMega" class="mobile-item">More Menu</label>
+          <div class="mega-box">
+            <div class="content">
+              <div class="row">
+                <img
+                  src="/static/nav_pic.jpg"
+                  alt="">
+              </div>
+              <div class="row">
+                <header>Check Weather</header>
+                <ul class="mega-links">
+                  <li><a href="/weather">Weather</a></li>
+                  <!-- <li><a href="#">Vectors</a></li>
+                  <li><a href="#">Business cards</a></li>
+                  <li><a href="#">Custom logo</a></li> -->
+                </ul>
+              </div>
+              <div class="row">
+                <header>Solution Services</header>
+                <ul class="mega-links">
+                  <li><a href="/sample">Disease Solution</a></li>
+                  <!-- <li><a href="#">Business Email</a></li>
+                  <li><a href="#">Mobile Email</a></li>
+                  <li><a href="#">Web Marketing</a></li> -->
+                </ul>
+              </div>
+              <div class="row">
+                <header>Security services</header>
+                <ul class="mega-links">
+                  <li><a href="#">Site Seal</a></li>
+                  <li><a href="#">VPS Hosting</a></li>
+                  <li><a href="#">Privacy Seal</a></li>
+                  <li><a href="#">Website design</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="/feedback">Feedback</a></li>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
+  <br><br><br><br><br>
+  
+  <button id="cat" onclick="goBack()">Back</button>
+  <br>
+
+  <br><br><br> <br>
+  <h1 id="welcome-heading">Welcome to Plants World Online</h1> <br>
+  <h3 style="font-size: 25px;" id="welcome-heading">Browse 1,425,000 global plant names, 202,500 detailed descriptions,
+    and 386,100 images</h3>
+ <br>
+
+ <br>
+  <!-- search  -->
+  <div id="cover">
+
+    <div class="tb">
+      <div class="td"><input type="text" id="searchInput" placeholder="Search" required onkeydown="handleSearch(event)">
+      </div>
+
+      <button style="width:100px;height: 100px;" type="submit" onclick="searchPlants()">
+
+        <lord-icon src="https://cdn.lordicon.com/whtfgdfm.json" trigger="hover" state="hover-ternd-flat-6"
+          colors="primary:#ffffff" style="width:100px;height: 80px;">
+        </lord-icon>
+      </button>
+
+    </div>
+
+  </div>
+  <div id="loader-container">
+    <div id="loader"></div>
+  </div>
+
+
+  <div id="results-container" class="container"></div>
+
+  
+  <script>
+    function handleSearch(event) {
+      // Check if the pressed key is Enter (key code 13)
+      if (event.keyCode === 13) {
+        searchPlants();
+      }
+    }
+  
+    function searchPlants() {
+      var loader = document.getElementById("loader");
+      var loaderContainer = document.getElementById("loader-container");
+      const query = document.getElementById('searchInput').value;
+  
+      loader.style.display = "block";
+      loaderContainer.style.display = "block";
+  
+      // Check if the query is empty
+      if (query.trim() === '') {
+        alert('Please enter a plant name before searching.');
+        return;
+      }
+  
+      // Replace 'http://localhost:5001' with your actual Flask server URL
+      const apiUrl = `http://localhost:5001/search?q=${query}`;
+  
+      // Fetch data from the Flask server
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const resultsContainer = document.getElementById('results-container');
+          resultsContainer.innerHTML = ''; // Clear previous results
+  
+          // Loop through the data and create HTML cards
+          data.data.forEach(plant => {
+            const card = document.createElement('div');
+            card.className = 'card';
+  
+            // Display plant information in the card
+            card.innerHTML = `
+                          ${plant.image_url ? `<img src="${plant.image_url}" alt="${plant.common_name}">` : ''}
+                        <h2 style="color: #d9d9d9;">${plant.common_name}</h2>
+                        <p style="color: white;"><strong>Scientific Name:</strong> ${plant.scientific_name}</p>
+                        <p style="color: white;"><strong>Family:</strong> ${plant.family}</p>
+                        <p style="color: white;"><strong>Genus:</strong> ${plant.genus}</p>
+                        <p style="color: white;"><strong>Year:</strong> ${plant.year}</p>
+                        
+                      `;
+  
+            resultsContainer.appendChild(card);
+            loaderContainer.style.display = "none";
+            loader.style.display = "none";
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error)
+          loaderContainer.style.display = "none";
+          loader.style.display = "none";
+        });
+    }
+  </script>
+  
+
+</body>
+
+</html>

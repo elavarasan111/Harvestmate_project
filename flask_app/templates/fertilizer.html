@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+   
+</head>
+<body>
+ 
+    <div class="container">
+        <h2>
+            <i class="fas fa-seedling"></i>&nbsp; Fertilizers  <button onclick="goToHomePage()" class="view-all-button"><i class="fas fa-arrow-left"></i></button>
+        </h2>
+        <div class="cart" id="fertilizers-container"></div>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        @media only screen and (max-width: 768px) {
+            /* Specific styles for smaller screens */
+            h2 {
+                font-size: 18px;
+            }
+        
+            .view-all-button {
+                padding: 8px 16px;
+            }
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2px 30px;
+            background-color: white;
+        }
+    
+        .cart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    
+        .fertilizer {
+            flex: 0 0 calc(30% - 20px);
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            padding: 10px;
+        }
+        .fertilizer img {
+            max-width: 50%;
+            max-height: 50%;
+
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+    
+        .fertilizer h3 {
+            margin-bottom: 5px;
+        }
+    
+        .fertilizer p {
+            margin-bottom: 10px;
+        }
+    
+        /* Media Queries for responsiveness */
+        @media screen and (max-width: 1024px) {
+            .fertilizer {
+                flex: 0 0 calc(45% - 20px);
+            }
+        }
+    
+        @media screen and (max-width: 768px) {
+            .fertilizer {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+    
+        .view-all-button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            float: right;
+            margin-left: 10px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        @media only screen and (max-width: 768px) {
+            /* Specific styles for smaller screens */
+            .view-all-button {
+                background-color: #000000;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 14px; /* Adjusted font size for smaller screens */
+                cursor: pointer;
+                border-radius: 50px; /* Making it a circle */
+                font-weight: bold;
+                margin-left: 0; /* Removed margin */
+            }
+        }
+    
+        .view-all-button:hover {
+            background-color: rgb(154, 154, 154);
+        }
+        h2 {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            padding: 10px 0;
+            z-index: 1000; /* Ensure the sticky element is above other content */
+        }
+    </style>
+    
+    <script>
+        const fertilizersData = [
+        {
+            "name": "Fertilizer",
+            "brand": "Urea",
+            "rate": "10",
+            "unit": "kg",
+            "image": "https://th.bing.com/th/id/OIP.WsgNNVY1h80B-vsn34V9kgHaIS?rs=1&pid=ImgDetMain"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "single Super Phospate",
+            "rate": "50",
+            "unit": "Kg",
+            "image": "https://th.bing.com/th/id/R.6e7cce5e51a008443beb1dc1da2ffc98?rik=6q4fBNGKnpqamA&riu=http%3a%2f%2fwww.emundi.com%2fimages%2fdetailed%2f9%2fWhatsApp_Image_2021-12-21_at_2.31.47_PM.jpeg&ehk=04qWlO63HaSNA3jQaOaVcM3oFR6ZjuJQKkGaN4DiPqY%3d&risl=&pid=ImgRaw&r=0"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Bharat DAP",
+            "rate": "25",
+            "unit": "kg",
+            "image": "https://www.spic.in/wp-content/uploads/2021/10/Bharat-DAP-SPIC-DAP.png"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Liq Humus",
+            "rate": "500",
+            "unit": "Ml",
+            "image": "https://www.humintech.com/fileadmin/content_images/agriculture/products/liqhumus_liquid_18/EN_liqhumus_liquid_18/1_LiqHumus_Liquid_18_EN.png"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Pow Humus",
+            "rate": "20",
+            "unit": "Kg",
+            "image": "https://www.humintech.com/fileadmin/content_images/agriculture/products/powhumus_wsg_85/EN_powhumus_wsg_85/1_PowHumus_WSG_85_EN.png"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Paras Formoola",
+            "rate": "25",
+            "unit": "Kg",
+            "image": "https://www.tatachemicals.com/upload/images/sugarcane_tcl_200.jpg"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Tracel",
+            "rate": "5",
+            "unit": "kg",
+            "image": "https://5.imimg.com/data5/SELLER/Default/2023/1/FG/WF/OY/9632619/tata-tracel-micronutrient-fertilizer.jpeg"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Dr Earth-Exotic Blend",
+            "rate": "5",
+            "unit": "Kg",
+            "image": "https://m.media-amazon.com/images/I/91HeM9AfhAL.jpg"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Dr Earth-Flower Girl",
+            "rate": "25",
+            "unit": "kg",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ_5ekoQCbHdo-DINKdsokah54c42s4Qfp3n5k3Mm0UY5UOANj3g62PmojmSq4D0vybew&usqp=CAU"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Zotal Ca",
+            "rate": "500",
+            "unit": "Ml",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ_5ekoQCbHdo-DINKdsokah54c42s4Qfp3n5k3Mm0UY5UOANj3g62PmojmSq4D0vybew&usqp=CAU"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Born Pep",
+            "rate": "250",
+            "unit": "Ml",
+            "image": "https://m.media-amazon.com/images/I/61Q0t6dboHL.jpg"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Nuca 11",
+            "rate": "300",
+            "unit": "Ml",
+            "image": "https://cdn-prodapi.iffcobazar.in/pub/media/catalog/product/cache/5f3447475aa96bb6c8cc6886bb71b2b4/n/u/nuca_calcium_11_1_ltr.jpg"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Iffco Nano DAP",
+            "rate": "500",
+            "unit": "Ml",
+            "image": "https://cdn-prodapi.iffcobazar.in/pub/media/catalog/product/cache/5f3447475aa96bb6c8cc6886bb71b2b4/c/o/coming_soon_-_copy.jpg"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Iffco Nano Urea",
+            "rate": "500",
+            "unit": "Ml",
+            "image": "https://5.imimg.com/data5/SELLER/Default/2022/8/GD/RV/PY/67673073/iffco-nano-urea-liquid-500-ml.jpg"
+        },
+        {
+            "name": "Fertilizer",
+            "brand": "Iffco Boron",
+            "rate": "250",
+            "unit": "Gram",
+            "image": "https://iffco-public-assets.s3.ap-south-1.amazonaws.com/s3fs-public/2021-11/boron-fertilizer-20.png"
+        }
+    ];
+    
+
+
+        // Function to display fertilizers
+        function displayFertilizers() {
+            const container = document.getElementById('fertilizers-container');
+            container.innerHTML = '';
+
+            fertilizersData.forEach(fertilizer => {
+                const fertilizerElement = document.createElement('div');
+                fertilizerElement.classList.add('fertilizer');
+
+                const imageElement = document.createElement('img');
+                imageElement.src = fertilizer.image;
+                imageElement.alt = fertilizer.name;
+                fertilizerElement.appendChild(imageElement);
+
+                const detailsElement = document.createElement('div');
+                detailsElement.innerHTML = `
+                    <h3>${fertilizer.name}</h3>
+                    <p><strong>Brand:</strong> ${fertilizer.brand}</p>
+                    <p><strong>Rate:</strong> ${fertilizer.rate} ${fertilizer.unit}</p>
+               
+                `;
+                fertilizerElement.appendChild(detailsElement);
+
+                container.appendChild(fertilizerElement);
+            });
+        }
+
+        // Function to be called when clicking "View All" button
+        function viewAllFertilizers() {
+            displayFertilizers();
+        }
+
+        // Initial call to display fertilizers
+        displayFertilizers();
+    function goToHomePage(){
+        window.location.href = "index.html";
+    }
+    </script>
+</body>
+</html>
+

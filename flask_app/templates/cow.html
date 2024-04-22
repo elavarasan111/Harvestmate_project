@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Calorie Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 40px;
+        }
+
+        .calculator {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="calculator">
+        <h2 class="text-center mb-4">Animal Calorie Calculator</h2>
+
+        <div class="mb-3">
+            <label for="animalType" class="form-label">Select Animal:</label>
+            <select class="form-select" id="animalType" onchange="toggleSections()">
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="cow">Cow</option>
+                <option value="horse">Horse</option>
+                <option value="rabbit">Rabbit</option>
+                <option value="goat">Goat</option>
+                <option value="donkey">Donkey</option>
+                <option value="buffalo">Buffalo</option>
+            </select>
+        </div>
+
+        <!-- Animal Sections -->
+        <div id="animalSections">
+            <!-- Sections will be dynamically added here -->
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JavaScript -->
+<script>
+    // Animal data (weight and activity level)
+    const animalData = {
+        dog: { weightId: 'dogWeight', activityLevelId: 'dogActivityLevel', multiplier: 30 },
+        cat: { weightId: 'catWeight', activityLevelId: 'catActivityLevel', multiplier: 30 },
+        cow: { weightId: 'cowWeight', activityLevelId: 'cowActivityLevel', multiplier: 30 },
+        horse: { weightId: 'horseWeight', activityLevelId: 'horseActivityLevel', multiplier: 30 },
+        rabbit: { weightId: 'rabbitWeight', activityLevelId: 'rabbitActivityLevel', multiplier: 30 },
+        goat: { weightId: 'goatWeight', activityLevelId: 'goatActivityLevel', multiplier: 30 },
+        donkey: { weightId: 'donkeyWeight', activityLevelId: 'donkeyActivityLevel', multiplier: 30 },
+        buffalo: { weightId: 'buffaloWeight', activityLevelId: 'buffaloActivityLevel', multiplier: 30 }
+    };
+
+    function toggleSections() {
+        const animalType = document.getElementById('animalType').value;
+        const animalSections = document.getElementById('animalSections');
+
+        // Remove all sections
+        while (animalSections.firstChild) {
+            animalSections.removeChild(animalSections.firstChild);
+        }
+
+        // Add section for the selected animal
+        const animalSection = document.createElement('div');
+        animalSection.id = animalType + 'Section';
+        animalSection.style.display = 'block';
+
+        const animalInfo = document.createElement('h3');
+        animalInfo.classList.add('text-center', 'mb-3');
+        animalInfo.textContent = animalType.charAt(0).toUpperCase() + animalType.slice(1) + ' Information';
+        animalSection.appendChild(animalInfo);
+
+        const weightInput = createInput('Weight (kg):', animalData[animalType].weightId, 'Enter weight');
+        animalSection.appendChild(weightInput);
+
+        const activityInput = createSelect('Activity Level:', animalData[animalType].activityLevelId);
+        animalSection.appendChild(activityInput);
+
+        const calculateButton = document.createElement('button');
+        calculateButton.classList.add('btn', 'btn-primary');
+        calculateButton.textContent = 'Calculate ' + animalType.charAt(0).toUpperCase() + animalType.slice(1) + ' Calories';
+        calculateButton.onclick = function() { calculateCalories(animalType); };
+        animalSection.appendChild(calculateButton);
+
+        const caloriesOutput = document.createElement('div');
+        caloriesOutput.classList.add('mt-3');
+        const totalCaloriesHeader = document.createElement('h4');
+        totalCaloriesHeader.textContent = 'Total Calories:';
+        caloriesOutput.appendChild(totalCaloriesHeader);
+        const totalCalories = document.createElement('p');
+        totalCalories.id = animalType + 'TotalCalories';
+        totalCalories.textContent = '0 calories';
+        caloriesOutput.appendChild(totalCalories);
+        animalSection.appendChild(caloriesOutput);
+
+        animalSections.appendChild(animalSection);
+    }
+
+    function createInput(labelText, inputId, placeholder) {
+        const div = document.createElement('div');
+        div.classList.add('mb-3');
+
+        const label = document.createElement('label');
+        label.setAttribute('for', inputId);
+        label.classList.add('form-label');
+        label.textContent = labelText;
+        div.appendChild(label);
+
+        const input = document.createElement('input');
+        input.setAttribute('type', 'number');
+        input.classList.add('form-control');
+        input.setAttribute('id', inputId);
+        input.setAttribute('placeholder', placeholder);
+        div.appendChild(input);
+
+        return div;
+    }
+
+    function createSelect(labelText, selectId) {
+        const div = document.createElement('div');
+        div.classList.add('mb-3');
+
+        const label = document.createElement('label');
+        label.setAttribute('for', selectId);
+        label.classList.add('form-label');
+        label.textContent = labelText;
+        div.appendChild(label);
+
+        const select = document.createElement('select');
+        select.classList.add('form-select');
+        select.setAttribute('id', selectId);
+
+        const activityLevels = {
+            1.2: 'Sedentary (little or no exercise)',
+            1.375: 'Lightly Active (light play/exercise 1-3 days/week)',
+            1.55: 'Moderately Active (moderate play/exercise 3-5 days/week)',
+            1.725: 'Very Active (hard play/exercise 6-7 days a week)',
+            1.9: 'Extra Active (very hard play/exercise & physical activity or 2x play)'
+        };
+
+        for (const level in activityLevels) {
+            const option = document.createElement('option');
+            option.setAttribute('value', level);
+            option.textContent = activityLevels[level];
+            select.appendChild(option);
+        }
+
+        div.appendChild(select);
+
+        return div;
+    }
+
+    function calculateCalories(animalType) {
+        const weight = parseFloat(document.getElementById(animalData[animalType].weightId).value);
+        const activityLevel = parseFloat(document.getElementById(animalData[animalType].activityLevelId).value);
+
+if (isNaN(weight) || isNaN(activityLevel)) {
+    alert("Please enter valid values for " + animalType + " weight and activity level.");
+    return;
+}
+
+const baseCalories = weight * animalData[animalType].multiplier; // Adjust this multiplier based on specific requirements
+const totalCalories = baseCalories * activityLevel;
+
+document.getElementById(animalType + 'TotalCalories').textContent = totalCalories.toFixed(2) + ' calories';
+}
+
+// Initialize the calculator with default animal (Dog)
+toggleSections();
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agro Weather Report</title>
+    <!-- Replace with locally hosted Bootstrap CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/flask_app/static/styles.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <style>
+      .container12 {
+        margin-top: 50px;
+      }
+
+      .weather-card {
+        background-color: #f1f7f4;
+        border-radius: 10px;
+        padding: 30px; /* Increased padding */
+        box-shadow: 0 4px 8px rgba(230, 230, 230, 0.784);
+        max-width: 500px; /* Set a max-width for responsiveness */
+        margin: auto; /* Center the card */
+      }
+
+      .weather-icon {
+        font-size: 24px;
+        margin-right: 5px;
+      }
+
+      .weather-data {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+    </style>
+
+    <script>
+      // Function to get the current location
+      function getCurrentLocation() {
+    console.log("Getting location...");
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            successCallback,
+            errorCallback
+        );
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+
+      // Success callback for getCurrentPosition
+      function successCallback(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    // Reverse geocoding to get location details
+    fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        var village = data.address.village;
+        var city =
+          data.address.city ||
+          data.address.town ||
+          data.address.suburb ||
+          data.address.hamlet;
+
+        var location = village || city;
+
+        document.getElementById("location").value = location;
+
+        // Automatically fetch weather after obtaining the location
+        fetchWeather(location);
+      })
+      .catch((error) =>
+        console.error("Error during reverse geocoding:", error)
+      );
+  }
+
+      // Error callback for getCurrentPosition
+      function errorCallback(error) {
+        console.error("Error getting location:", error);
+        alert("Error getting location. Please enter manually.");
+      }
+
+      function getWeather() {
+        var location = document.getElementById("location").value;
+        fetchWeather(location);
+      }
+
+      // ...
+
+      function fetchWeather(location) {
+        $.post("/get_weather", { location: location }, function (data) {
+          if ("error" in data) {
+            document.getElementById(
+              "weatherResult"
+            ).innerHTML = `<p class="text-center text-danger">${data["error"]}</p>`;
+          } else {
+            var temperature = data.temperature;
+            var humidity = data.humidity;
+            var windSpeed = data.wind_speed * 3.6; // Convert wind speed to km/h
+
+            var weatherData = `
+                <div class="weather-data">
+                    <i class="fas fa-thermometer-half weather-icon"></i>
+                    Temperature: ${temperature}°C
+                    <br>
+                    <i class="fas fa-tint weather-icon"></i>
+                    Humidity: ${humidity}%
+                    <br>
+                    <i class="fas fa-wind weather-icon"></i>
+                    Wind Speed: ${windSpeed.toFixed(2)} km/h
+                </div>
+            `;
+
+            document.getElementById("weatherResult").innerHTML = `
+                <h4 class="text-center">Weather Report for ${location}</h4>
+                <p class="text-center">${weatherData}</p>
+            `;
+          }
+        });
+      }
+
+      // ...
+
+      // Function to handle Enter key press
+      function handleSearch(event) {
+        // Check if the pressed key is Enter (key code 13)
+        if (event.keyCode === 13) {
+          getWeather();
+        }
+      }
+
+      // Auto load the geolocation city on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        getCurrentLocation();
+      });
+    </script>
+
+    <!-- ... (other body elements) ... -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <div class="wrapper">
+        <div class="logo"><a href="#" class="emlj-link">𝔼𝕄𝕃𝕁</a></div>
+        <input type="radio" name="slider" id="menu-btn" />
+        <input type="radio" name="slider" id="close-btn" />
+        <ul class="nav-links">
+          <label for="close-btn" class="btn close-btn"
+            ><i class="fas fa-times"></i
+          ></label>
+          <li><a href="#">Home</a></li>
+          <li><a href="/input">Plant Disease Predict</a></li>
+          <!-- <li>
+              <a href="#" class="desktop-item">Dropdown Menu</a>
+              <input type="checkbox" id="showDrop">
+              <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+              <ul class="drop-menu">
+                <li><a href="#">Drop menu 1</a></li>
+                <li><a href="#">Drop menu 2</a></li>
+                <li><a href="#">Drop menu 3</a></li>
+                <li><a href="#">Drop menu 4</a></li>
+              </ul>
+            </li> -->
+          <li>
+            <a href="#" class="desktop-item">More Menu</a>
+            <input type="checkbox" id="showMega" />
+            <label for="showMega" class="mobile-item">More Menu</label>
+            <div class="mega-box">
+              <div class="content">
+                <div class="row">
+                  <img src="/static/nav_pic.jpg" alt="" />
+                </div>
+                <div class="row">
+                  <header>Check Weather</header>
+                  <ul class="mega-links">
+                    <li><a href="/weather">Weather</a></li>
+                    <!-- <li><a href="#">Vectors</a></li>
+                      <li><a href="#">Business cards</a></li>
+                      <li><a href="#">Custom logo</a></li> -->
+                  </ul>
+                </div>
+                <div class="row">
+                  <header>Email Services</header>
+                  <ul class="mega-links">
+                    <li><a href="#">Personal Email</a></li>
+                    <li><a href="#">Business Email</a></li>
+                    <li><a href="#">Mobile Email</a></li>
+                    <li><a href="#">Web Marketing</a></li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <header>Security services</header>
+                  <ul class="mega-links">
+                    <li><a href="#">Site Seal</a></li>
+                    <li><a href="#">VPS Hosting</a></li>
+                    <li><a href="#">Privacy Seal</a></li>
+                    <li><a href="#">Website design</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="#">About</a></li>
+          <li><a href="/feedback">Feedback</a></li>
+        </ul>
+        <label for="menu-btn" class="btn menu-btn"
+          ><i class="fas fa-bars"></i
+        ></label>
+      </div>
+    </nav>
+    <br /><br />
+    <br />
+    <br /><br />
+    <br />
+    <div class="container12">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="weather-card">
+            <h2 class="text-center mb-4">Agro Weather Report</h2>
+
+            <form id="weatherForm">
+              <div class="form-group">
+                <label for="location">Enter Location: </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="location"
+                  placeholder="E.g., City, Country"
+                  required
+                  onkeypress="handleSearch(event)"
+                />
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-primary btn-block"
+                onclick="getWeather()"
+              >
+                Get Weather Report
+              </button>
+            </form>
+
+            <div id="weatherResult" class="mt-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Move these script tags to the end of the body -->
+    <!-- ... (other head elements) ... -->
+  </body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <title>Product Description</title>
+
+    <style>
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+
+
+ .card34 {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.774);
+      transition: 0.3s;
+      max-width: 300px;
+      margin: 25px;
+      height:auto;
+    }
+
+    .container34 {
+      padding: 20px;
+    }
+    .container34 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 35vh; /* Ensure container covers the entire viewport height */
+    }
+    
+
+    
+    .container34 a {
+        /* Styles for <a> elements (buttons) */
+        margin-top: 0px; /* Push the button to the bottom */
+    }
+    
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .card {
+        width: calc(50% - 40px);
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .card {
+        width: calc(100% - 40px);
+      }
+    }
+
+    </style>
+    <style>
+
+
+
+      
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            margin: 20px;
+            padding: 20px;
+            background-color: #00000020;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgb(234, 244, 235);
+            height: 100%;
+        }
+
+        .product-description {
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            box-shadow: 0 0 15px rgb(0, 0, 0);
+   
+        }
+        .specification {
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            box-shadow: 0 0 15px rgb(0, 0, 0);
+
+        }
+
+        #image {
+    width: 60%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for devices with a minimum width of 769px (larger devices) */
+@media only screen and (max-width: 900px) {
+    #image {
+        
+    margin-left: 67px;
+    max-width: 50%;
+    height: auto;
+        /* Adjust styles for larger screens */
+    }
+}
+
+/* Media query for devices with a minimum width of 1024px (even larger devices) */
+@media only screen and (min-width: 1024px) {
+    #image {
+        
+    width: 50%;
+    height: 50%;
+        /* Adjust styles for even larger screens */
+    }
+}
+
+        .specification {
+            margin-top: 20px;
+            background-color: #9e8f8f70;
+        }
+
+        h2 {
+            color: #000000;
+            margin-top: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .shop-details {
+            margin: 20px;
+            padding: 20px;
+           
+            border: 2px solid #000000;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #9e8f8f70;
+        }
+
+        #shopimage img {
+            width: 350px;
+            height: 400px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.903);
+            padding: 1px;
+        }
+
+        /* Media queries for responsiveness */
+        @media only screen and (min-width: 600px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .product-description, .specification {
+                flex: 1;
+            }
+
+            .specification {
+                margin-top: 0;
+                margin-left: 20px;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .product-description, .specification {
+                flex: 1;
+            }
+
+            .specification {
+                margin-top: 0;
+                margin-left: 30px;
+                padding-right: 15%;
+            }
+        }
+        @media only screen and (min-width: 1024px) {
+        .product-description{
+            padding-left: 15%;
+        }}
+
+
+
+
+
+        .my-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      background-color: #3498db;
+      color: #fff;
+      border: 2px solid #2980b9;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Hover effect */
+    .my-button:hover {
+      background-color: #2980b9;
+      color: #fff;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-description" >
+            <img id="image" alt="Product Image">
+            <h2 id="title"></h2>
+            <p id="provider"></p>
+            <p id="category"></p>
+            <p id="size"></p>
+            <p id="price"></p>
+            <p id="product-description"></p>
+        </div>
+        <div class="specification">
+            <h2>PRODUCT DETAILS</h2>
+            <p id="type"></p>
+            <p id="content"></p>
+            <p id="Crops"></p>
+            <p id="Dosage"></p>
+            <p id="formulation"></p>
+            <p id="Remark"></p>
+            <p id="application"></p>
+        </div>
+    </div>
+    <h1>Available shops</h1>
+
+    <div class="container">
+   
+    
+    <div class="card34">
+      <img src="/static/OIP.jpg" alt="Shop Image">
+      <div class="container34">
+        <h4><b>SREE VELAVAN ENTERPRISES Organic Fertilizer and Pesticides</b></h4>
+       
+        <p>10 km Away</p>
+        <a href="/shop-1" class="btn">Visit Shop</a>
+      </div>
+    </div>
+    <div class="card34">
+      <img src="https://lh3.googleusercontent.com/p/AF1QipPXyzKqo8zxCfR0LMV8f5bM2HUbQhc9p53Ua060=s1360-w1360-h1020" alt="Shop Image">
+      <div class="container34">
+        <h4><b>Agni Fertilisers and Chemicals Salem</b></h4>
+       
+        <p>19 km Away</p>
+        <a href="/shop-2" class="btn">Visit Shop</a>
+      </div>
+    </div>
+    <div class="card34">
+        <img src="https://lh3.googleusercontent.com/p/AF1QipPFP4QM9wbNChdrsjgb7bW0UqE2teEmQvzDmXgZ=s1360-w1360-h1020" alt="Shop Image">
+        <div class="container34">
+          <h4><b>FACT Agro Service Centre <br>Salem</b></h4>
+         
+          <p>19 km Away</p>
+          <a href="/shop-3" class="btn">Visit Shop</a>
+        </div>
+      </div>
+      
+</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve parameters from the URL
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get("title");
+            const provider = params.get("provider");
+            const category = params.get("category");
+            const size = params.get("size");
+            const price = params.get("price");
+            const details = params.get("details");
+            const type = params.get("type");
+            const content = params.get("content");
+            const Crops = params.get("Crops");
+            const Dosage = params.get("Dosage");
+            const formulation = params.get("formulation");
+            const Remark = params.get("Remark");
+            const application = params.get("application");
+    
+            // Update product details on the description page
+            document.getElementById("title").textContent = title;
+            document.getElementById("image").src = params.get("image") ; // Set the src attribute for the image
+            document.getElementById("provider").textContent = `Provider: ${provider}`;
+            document.getElementById("category").textContent = `Category: ${category}`;
+            document.getElementById("size").textContent = `Size: ${size}`;
+            document.getElementById("price").textContent = `Price: ${price}`;
+            document.getElementById("product-description").textContent = details;
+    
+            // Update product details in the PRODUCT DETAILS section
+            document.getElementById("type").textContent = `Type: ${type}`;
+            document.getElementById("content").textContent = `Content: ${content}`;
+            document.getElementById("Crops").textContent = `Crops: ${Crops}`;
+            document.getElementById("Dosage").textContent = `Dosage: ${Dosage}`;
+            document.getElementById("formulation").textContent = `Formulation: ${formulation}`;
+            document.getElementById("Remark").textContent = `Remark: ${Remark}`;
+            document.getElementById("application").textContent = `Application: ${application}`;
+
+            
+        });
+
+
+
+    </script>
+</body>
+</html>

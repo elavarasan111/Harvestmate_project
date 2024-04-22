@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore beautiful features designed to enhance your online experience.">
+    <title>Beautiful Features</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="/flask_app/static/styles.css">
+  
+  <!-- Link Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Link Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS Styles -->
+  <style>
+    /* Custom CSS Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
+
+    body {
+      font-family: 'Titillium Web', sans-serif;
+      background-color: #f8f9fa; /* Light gray background */
+    }
+
+    .custom-card1 {
+      padding: 2% 5%;
+      background-color: white; /* Transparent white background */
+      color: #ffffff; /* Dark text */
+      border-radius: 15px; /* Rounded corners */
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Soft shadow */
+      animation: fadeInAnimation 1s ease-in-out; /* Fade in animation */
+    }
+
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .footer-text1 {
+      margin-bottom: 20px;
+    }
+
+    .custom-title1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #007bff; /* HarvestMate blue */
+      transition: color 0.3s ease; /* Smooth transition */
+    }
+
+    .custom-title1:hover {
+      color: #0056b3; /* Darker blue on hover */
+    }
+
+    .custom-text1 {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .social1 i {
+      margin-right: 10px;
+      color: #eef3f7; /* Dark gray social icons */
+      transition: color 0.3s ease; /* Smooth transition */
+    }
+
+    .social1 i:hover {
+      color: #007bff; /* HarvestMate blue on hover */
+    }
+
+    .heading1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .custom-list1 li {
+      margin-bottom: 8px;
+    }
+
+    .custom-list1 a {
+      color: #d0d7de; /* Dark gray links */
+      transition: color 0.3s ease; /* Smooth transition */
+      position: relative;
+    }
+
+    .custom-list1 a:hover {
+      color: #007bff; /* HarvestMate blue on hover */
+    }
+
+    .custom-list1 a:hover::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -3px;
+      left: 0;
+      background-color: #007bff; /* HarvestMate blue */
+      animation: glowAnimation 1s infinite alternate;
+    }
+
+    @keyframes glowAnimation {
+      0% {
+        opacity: 0.5;
+        box-shadow: 0 0 5px #007bff; /* HarvestMate blue */
+      }
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 20px #007bff; /* HarvestMate blue */
+      }
+    }
+
+    .custom-footer1 {
+      font-size: 14px;
+      color: #ffffff; /* Dark gray footer text */
+    }
+
+    .policy1>div {
+      margin-right: 10px;
+    }
+
+    .divider1 {
+      border-top: 1px solid #666; /* Darker divider */
+      margin: 20px 0;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 576px) {
+      .custom-card1 {
+        padding: 5% 10px;
+      }
+    }
+  </style>
+  
+    <style>
+        /* Reset CSS for consistent styling */
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+
+      /* Background animation */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(52, 152, 219, 0.7), rgba(46, 204, 113, 0.7), rgba(231, 76, 60, 0.7), rgba(243, 156, 18, 0.7)), url('/static/pexels-pixabay-255464.jpg');
+
+    background-size: cover;
+    background-blend-mode: overlay;
+    animation: scrollBackground 60s linear infinite;
+}
+
+/* Media query for larger devices (e.g., devices with a minimum width of 1200px) */
+@media screen and (min-width: 1200px) {
+    body::before {
+        
+        content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(52, 152, 219, 0.7), rgba(46, 204, 113, 0.7), rgba(231, 76, 60, 0.7), rgba(243, 156, 18, 0.7)), url('/static/pexels-pixabay-255464.jpg');
+    background-size: 150% 120%;
+
+    background-blend-mode: overlay;
+    animation: scrollBackgroundd 60s linear infinite;
+    
+    }
+    /* Add any additional styles for larger devices here */
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes scrollBackgroundd{
+    0% {
+        background-position: 0% 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}
+
+
+
+
+       
+
+        #features {
+            display: flex;
+            justify-content:flex-start;
+            align-items: center;
+            flex-wrap:wrap;
+          
+            position: relative; /* Ensure feature cards stay on top of the animated background */
+           
+        }
+
+        .feature {
+            
+           
+            margin: 13px;
+            padding: 10px;
+            
+            text-align: left;
+            background-color: #68626266;
+            box-shadow: 0 20px 20px rgba(235, 145, 145, 0.1); /* Subtle shadow effect */
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .feature img {
+            max-width: 40%;
+            height: auto;
+            display: block; /* To remove any extra spacing below the image */
+ 
+            margin: 0 auto;
+            border-radius: 90px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+            background-color: #f4fcf8b2;
+            color: #000000;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        }
+
+        h2 {
+           text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* Adjust styles for small screens */
+            .feature {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+      
+
+        @media only screen and (min-width: 901px) {
+            /* Adjust styles for large screens */
+            .feature {
+                width: 300px;
+               
+                height: 355px;
+               
+            }
+        }
+
+        @media only screen and (min-width: 901px) {
+            /* Adjust styles for large screens */
+            #features{
+              
+                margin-left: 110px;
+            }
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .feature a {
+            text-decoration: none;
+            color: inherit;
+           
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+   
+  <nav>
+    <div class="wrapper">
+      <div class="logo"> <a href="#" class="emlj-link">𝔼𝕄𝕃𝕁</a></div>
+      <input type="radio" name="slider" id="menu-btn">
+      <input type="radio" name="slider" id="close-btn">
+      <ul class="nav-links">
+        <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+        <li><a href="/sign">Signin</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="/sign">Plant Disease Predict</a></li>
+        <!-- <li>
+          <a href="#" class="desktop-item">Dropdown Menu</a>
+          <input type="checkbox" id="showDrop">
+          <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+          <ul class="drop-menu">
+            <li><a href="#">Drop menu 1</a></li>
+            <li><a href="#">Drop menu 2</a></li>
+            <li><a href="#">Drop menu 3</a></li>
+            <li><a href="#">Drop menu 4</a></li>
+          </ul>
+        </li> -->
+        <li>
+          <!-- <a href="#" class="desktop-item">More Menu</a> -->
+          <input type="checkbox" id="showMega">
+          <!-- <label for="showMega" class="mobile-item">More Menu</label> -->
+          <div class="mega-box">
+            <div class="content">
+              <div class="row">
+                <img
+                  src="/static/nav_pic.jpg"
+                  alt="">
+              </div>
+              <div class="row">
+                <header>Check Weather</header>
+                <ul class="mega-links">
+                  <li><a href="/sign">Weather</a></li>
+                  <!-- <li><a href="#">Vectors</a></li>
+                  <li><a href="#">Business cards</a></li>
+                  <li><a href="#">Custom logo</a></li> -->
+                </ul>
+              </div>
+              <div class="row">
+                <header>Solution Services</header>
+                <ul class="mega-links">
+                  <li><a href="/sign">Disease Solution</a></li>
+                  <!-- <li><a href="#">Business Email</a></li>
+                  <li><a href="#">Mobile Email</a></li>
+                  <li><a href="#">Web Marketing</a></li> -->
+                </ul>
+              </div>
+              <div class="row">
+                <header>Security services</header>
+                <ul class="mega-links">
+                  <li><a href="#">Site Seal</a></li>
+                  <li><a href="#">VPS Hosting</a></li>
+                  <li><a href="#">Privacy Seal</a></li>
+                  <li><a href="#">Website design</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="/sign">Feedback</a></li>
+      </ul>
+      <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>
+
+
+  
+<br><br><br><br>
+    <div id="features">
+        <div class="feature animated">
+          <a href="/sign">
+            <h2>Agro shop</h2>
+            <img src="{{ url_for('static', filename='shop-sign.gif') }}" alt="Feature 1 Image">
+            <p>Browse diverse agri shops on our website for top-quality products, simplifying your farming needs with effortless exploration and shopping.</p>
+          </a>
+        </div>
+      
+        <div class="feature animated">
+          <a href="/sign" >
+            <h2>Plant identify</h2>
+            <img src="{{ url_for('static', filename='eco-earth.gif') }}" alt="Feature 1 Image">
+            <p>Identify a variety of plants effortlessly on our website, featuring multiple resources for seamless exploration and information retrieval.</p>
+          </a>
+        </div>
+      
+        <div class="feature animated">
+          <a href="/sign" >
+            <h2>Weather forecast</h2>
+            <img src="{{ url_for('static', filename='rain.gif') }}" alt="Feature 1 Image">
+            <p>Explore diverse weather forecasts on our website for accurate updates, simplifying your planning with effortless exploration and information.</p>
+          </a>
+        </div>
+      
+        <div class="feature animated">
+          <a href="/sign" >
+            <h2>Plant Disease Solutions</h2>
+            <img src="{{ url_for('static', filename='pest (2).png') }}" alt="Feature 1 Image">
+            <p>Find tailored plant disease solutions on our platform, offering a seamless experience for discovering remedies from various providers to nurture your crops.</p>
+          </a>
+        </div>
+      
+        <div class="feature animated">
+          <a href="/sign" >
+            <h2>Tools for Agriculture</h2>
+            <img src="{{ url_for('static', filename='sickle.gif') }}" alt="Feature 1 Image">
+            <p>Discover a range of essential tools for agriculture on our platform, streamlining your farming tasks and ensuring efficiency in every field.</p>
+          </a>
+        </div>
+      </div>
+      
+
+
+
+
+
+
+      
+   
+
+
+     
+<div class="container-fluid " style="background-color: #eef3f7;">
+  <div class="custom-card1" >
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="footer-text1">
+          <div class="d-flex align-items-center">
+            <h1 class="font-weight-bold  px-1 custom-title1">H</h1>
+            <h1 class="custom-title1">arvestMate</h1>
+          </div>
+          <p class="custom-text1">Optimizing agricultural processes with weather forecasting, plant identification, an Agro Shop, seamless communication, and plant disease solutions.</p>
+          <div class="social1">
+            <i class="fab fa-facebook-f fa-lg"></i>
+            <i class="fab fa-instagram fa-lg"></i>
+            <i class="fab fa-twitter fa-lg"></i>
+            <i class="fab fa-linkedin-in fa-lg"></i>
+            <i class="fab fa-pinterest fa-lg"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-2">
+        
+      </div>
+      <div class="col-md-2">
+        <h5 class="heading1">Products</h5>
+        <ul class="custom-list1">
+          <li><a href="fertilizer.html">Fertilizers</a></li>
+          <li><a href="herbicide.html">Herbicides</a></li>
+          <li><a href="pgrs.html">PGRs</a></li>
+          <li><a href="pesticides.html">Pesticides</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5 class="heading1">Company</h5>
+        <ul class="custom-list1">
+          <li><a href="">About Us</a></li>
+          <li><a href="">Blog</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">Join Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider1"></div>
+    <div class="row custom-footer1">
+      <div class="col-md-6">
+        <p><i class="fas fa-copyright"></i>&copy; 2024 All rights reserved</p>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-end">
+          <div class="policy1">
+            <div>Terms of Use</div>
+            <div>Privacy Policy</div>
+            <div>Cookie Policy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<!-- Link Font Awesome Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!-- Link Bootstrap JS (Optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+
+   
+
+  </body>
+
+</html>
